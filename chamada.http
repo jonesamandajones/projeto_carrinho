@@ -1,0 +1,225 @@
+#######################################
+########## SEJA BEM-VINDA(O)!##########
+#######################################
+
+#######################################
+################ POST #################
+#######################################
+
+############  usuário  ################
+
+### Cadastrar usuário 171
+POST http://127.0.0.1:8000/usuario HTTP/1.1
+content-type: application/json
+
+{
+    "id": 171,
+    "nome": "Roberval Ladrão de Chocolate",
+    "email": "robervaladrao@email.com",
+    "senha": "chocolate"
+}
+### Cadastrar usuário 888
+POST http://127.0.0.1:8000/usuario HTTP/1.1
+content-type: application/json
+
+{
+    "id": 888,
+    "nome": "Pederneiras Festa da Uva",
+    "email": "aaai@email.com",
+    "senha": "maisdemesa"
+}
+### Cadastrar usuário 314
+POST http://127.0.0.1:8000/usuario HTTP/1.1
+content-type: application/json
+
+{
+    "id": 314,
+    "nome": "Nazaré Confusa",
+    "email": "nazarecontabilidade@imail.com",
+    "senha": "perdida"
+}
+### Cadastrar usuário 113
+POST http://127.0.0.1:8000/usuario HTTP/1.1
+content-type: application/json
+
+{
+    "id": 113,
+    "nome": "Giovana Forninho",
+    "email": "eitagiovana@imail.com",
+    "senha": "seguraoforninho"
+}
+######## endereços do usuário 171 ###########
+### Cadastrar endereço 1
+POST http://127.0.0.1:8000/endereco/171 HTTP/1.1
+content-type: application/json
+
+{
+    "id_end": 1,
+    "rua": "Rua Banksy, 5432",
+    "cep": "111111-111",
+    "cidade": "São Paulo",
+    "estado": "SP"
+}
+### Cadastrar endereço 2
+POST http://127.0.0.1:8000/endereco/171 HTTP/1.1
+content-type: application/json
+
+{
+    "id_end": 2,
+    "rua": "Rua Miró, 543",
+    "cep": "22555-101",
+    "cidade": "São Luís",
+    "estado": "MA"
+}
+### Cadastrar endereço 3
+POST http://127.0.0.1:8000/endereco/171 HTTP/1.1
+content-type: application/json
+
+{
+    "id_end": 3,
+    "rua": "Alameda Duchamp, 1917",
+    "cep": "25778-004",
+    "cidade": "Belém",
+    "estado": "PA"
+}
+############  produtos  ################
+### Cadastrar produto 10 no catálogo 
+POST http://127.0.0.1:8000/catalogo/10 HTTP/1.1
+content-type: application/json
+
+{
+    "id_produto": 10,
+    "nome": "Bolsa Saco de Lixo Balenciaga",
+    "descricao": "Bolsa que simula sacola de lixo. Cor preta",
+    "preco": 506992.44
+}
+### Cadastrar produto 20 no catálogo 
+POST http://127.0.0.1:8000/catalogo/20 HTTP/1.1
+content-type: application/json
+
+{
+    "id_produto": 20,
+    "nome": "Tênis Destroyed Balenciaga",
+    "descricao": "Tênis que simula ter passado por um caminhão de lixo. Cor única.",
+    "preco": 907199.99
+}
+### Cadastrar produto 30 no catálogo 
+POST http://127.0.0.1:8000/catalogo/30 HTTP/1.1
+content-type: application/json
+
+{
+    "id_produto": 30,
+    "nome": "Pulseira Lacre Balenciaga",
+    "descricao": "Pulseira em formato de enforca-gato em plástico. Cor variada",
+    "preco": 30640.00
+}
+
+############ Carrinho de compras ############
+### Criar carrinho por ID de usuário e adicionar produto
+
+### Usuário 888 produto 10
+POST http://127.0.0.1:8000/carrinho/888/10 HTTP/1.1
+content-type: application/json
+
+{
+    "id_usuario": 888,
+    "id_produto": 10
+}
+### Usuário 888 produto 20
+POST http://127.0.0.1:8000/carrinho/888/20 HTTP/1.1
+content-type: application/json
+
+{
+    "id_usuario": 888,
+    "id_produto": 20
+}
+### Usuário 888 produto 30
+POST http://127.0.0.1:8000/carrinho/888/30 HTTP/1.1
+content-type: application/json
+
+{
+    "id_usuario": 888,
+    "id_produto": 30
+}
+#######################################
+################ GET ##################
+#######################################
+
+############  usuário  ################
+
+### Consultar usuário pelo código ID
+GET http://127.0.0.1:8000/usuario?id=171 HTTP/1.1
+content-type: application/json
+
+### Consultar usuário pelo nome
+GET http://127.0.0.1:8000/usuario/Giovana HTTP/1.1
+content-type: application/json   
+
+############  endereço  ################
+
+### Pesquisar endereços por ID do usuário
+GET http://127.0.0.1:8000/usuario/171/enderecos HTTP/1.1
+content-type: application/json
+
+############ emails ################
+
+### Usuários com mesmo domínio
+GET http://127.0.0.1:8000/usuarios/imail HTTP/1.1
+content-type: application/json
+
+### Carrinho por ID do usuário
+GET http://127.0.0.1:8000/carrinho/888 HTTP/1.1
+content-type: application/json
+
+### Total do carrinho por ID do usuário
+GET http://127.0.0.1:8000/carrinho/total/888 HTTP/1.1
+content-type: application/json
+
+############ Consultas ################
+
+### Retorna catálogo de produtos
+GET http://127.0.0.1:8000/catalogo/ HTTP/1.1
+content-type: application/json
+
+### Retorna todos os usuários
+GET http://127.0.0.1:8000/usuarios/ HTTP/1.1
+content-type: application/json
+
+### Retorna todos os carrinhos
+GET http://127.0.0.1:8000/carrinhos/ HTTP/1.1
+content-type: application/json
+
+
+############ bem-vinda ################
+
+### boas vindas
+GET http://127.0.0.1:8000/ HTTP/1.1
+content-type: application/json
+
+#######################################
+############### DELETE ################
+#######################################
+
+############# usuário #################
+
+### Remover usuário pelo código ID
+DELETE http://127.0.0.1:8000/usuario/113 HTTP/1.1
+content-type: application/json
+
+############ endereço ################
+
+### Remover endereço por ID do usuário e do endereço
+DELETE http://127.0.0.1:8000/endereco/171/1 HTTP/1.1
+content-type: application/json
+
+############ produtos ################
+
+### Remover produto do catálogo por ID do produto 
+DELETE http://127.0.0.1:8000/catalogo/10 HTTP/1.1
+content-type: application/json
+
+### Deletar carrinho ID do usuário 
+DELETE http://127.0.0.1:8000/carrinho/888 HTTP/1.1
+content-type: application/json
+
+#######################################
